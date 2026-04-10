@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eloah 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  h1 {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    font-size: 2.2em;
+    text-shadow: 0 0 10px pink;
+    z-index: 3;
+  }
+
+  .star {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: blink 1.5s infinite alternate;
+  }
+
+  .constellation {
+    background: pink;
+    box-shadow: 0 0 10px pink, 0 0 20px pink;
+    width: 10px;
+    height: 10px;
+  }
+
+  @keyframes blink {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+  }
+
+  .message {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-size: 1.2em;
+    z-index: 3;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  @keyframes subir {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-80px); opacity: 0; }
+  }
+
+  .music-btn {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255,192,203,0.4);
+  }
+
+  .music-btn:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  .foto-casal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    max-width: 70vw;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.35);
+    z-index: 2;
+    animation: fadeFoto 1.2s ease;
+  }
+
+  @keyframes fadeFoto {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  .tela-final {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .titulo-final {
+    position: static;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px pink, 0 0 20px pink;
+    margin-bottom: 20px;
+  }
+
+  .texto-final {
+    font-size: 1.3em;
+    max-width: 700px;
+    line-height: 1.8;
+  }
+
+  .btn-final {
+    margin-top: 30px;
+    padding: 12px 22px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 24px;
+    background: pink;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 192, 203, 0.6);
+  }
+
+  .btn-final:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+
+<body>
+
+<h1 id="titulo"></h1>
+
+<button class="music-btn" onclick="tocarMusica()">🎵 Tocar música</button>
+
+<div id="msg" class="message">Clique nas estrelas 💖</div>
+
+<audio id="musica" src="musica.mp3" loop></audio>
+
+<script>
+const texto = "Eloah, você é meu universo 💫";
+let i = 0;
+
+function digitar() {
+  if (i < texto.length) {
+    document.getElementById("titulo").innerHTML += texto.charAt(i);
+    i++;
+    setTimeout(digitar, 55);
+  }
+}
+digitar();
+
+const mensagens = [
+  "Você mudou minha vida 💖",
+  "Meu mundo é você 🌍",
+  "Eu escolheria você mil vezes",
+  "Você é meu lugar favorito",
+  "Eu te amo mais a cada dia ❤️",
+  "Você é meu futuro 💫",
+  "Seu sorriso ilumina tudo ✨",
+  "Você é a melhor parte dos meus dias",
+  "Com você, tudo fica mais bonito",
+  "Você é meu pensamento favorito",
+  "Meu coração sempre encontra você",
+  "Você é meu sonho mais lindo",
+  "Você é a paz que eu não sabia que precisava",
+  "Seu abraço é meu lugar seguro",
+  "Você faz meu mundo ter cor",
+  "Eu amo cada detalhe seu",
+  "Você é meu presente preferido da vida",
+  "Até o céu parece mais bonito por sua causa",
+  "Meu coração sorri quando pensa em você",
+  "Você é a pessoa que eu quero por perto sempre",
+  "Te amar é a coisa mais fácil que já senti",
+  "Você é meu acaso favorito",
+  "Cada segundo com você vale ouro",
+  "Você é a melhor coincidência da minha vida",
+  "Meu coração te escolhe todos os dias",
+  "Se for com você, eu quero tudo",
+  "Você é meu capítulo preferido",
+  "Quando penso em amor, penso em você",
+  "Você é minha estrela mais bonita",
+  "Nada se compara ao que sinto por você",
+  "Eu gosto de existir no mesmo mundo que você",
+  "Você deixa tudo mais leve",
+  "Amar você é meu sentimento favorito",
+  "Você é meu para sempre em forma de pessoa",
+  "Seus olhos têm meu universo inteiro",
+  "Eu me apaixono por você de novo todo dia",
+  "Você é o motivo de muitos dos meus sorrisos",
+  "O melhor da vida tem seu nome",
+  "Você é meu porto seguro",
+  "Eu quero viver muitos momentos lindos com você"
+];
+
+function tocarMusica() {
+  const musica = document.getElementById("musica");
+  musica.volume = 0.3;
+  musica.play();
+}
+
+let cliques = 0;
+let fotoMostrada = false;
+
+function criarCoracao(x, y) {
+  const coracao = document.createElement("div");
+  coracao.innerHTML = "❤️";
+  coracao.style.position = "absolute";
+  coracao.style.left = x + "px";
+  coracao.style.top = y + "px";
+  coracao.style.fontSize = "20px";
+  coracao.style.pointerEvents = "none";
+  coracao.style.animation = "subir 1s ease-out";
+  coracao.style.zIndex = "4";
+
+  document.body.appendChild(coracao);
+  setTimeout(() => coracao.remove(), 1000);
+}
+
+function cliqueRomantico(e) {
+  cliques++;
+
+  const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+  document.getElementById("msg").innerText = msg;
+
+  criarCoracao(e.clientX, e.clientY);
+
+  if (cliques === 7 && !fotoMostrada) {
+    mostrarFoto();
+    fotoMostrada = true;
+  }
+
+  if (cliques === 12) {
+    document.getElementById("msg").innerText = "Você está descobrindo meu coração... 💖";
+  }
+
+  if (cliques === 20) {
+    mostrarFinal();
+  }
+}
+
+for (let i = 0; i < 150; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.top = Math.random() * window.innerHeight + "px";
+
+  star.onclick = cliqueRomantico;
+
+  document.body.appendChild(star);
+}
+
+const baseX = window.innerWidth / 2 - 200;
+const baseY = window.innerHeight / 2 - 90;
+
+const letras = [
+  [0,0],[20,0],[40,0],
+  [0,20],
+  [0,40],[20,40],
+  [0,60],
+  [0,80],[20,80],[40,80],
+
+  [80,0],
+  [80,20],
+  [80,40],
+  [80,60],
+  [80,80],[100,80],[120,80],
+
+  [160,0],[180,0],[200,0],
+  [160,20],[200,20],
+  [160,40],[200,40],
+  [160,60],[200,60],
+  [160,80],[180,80],[200,80],
+
+  [240,20],
+  [220,40],[260,40],
+  [220,60],[240,60],[260,60],
+  [220,80],[260,80],
+
+  [300,0],[300,20],[300,40],[300,60],[300,80],
+  [320,40],
+  [340,0],[340,20],[340,40],[340,60],[340,80]
+];
+
+letras.forEach(([x, y]) => {
+  const star = document.createElement("div");
+  star.className = "star constellation";
+  star.style.left = (baseX + x) + "px";
+  star.style.top = (baseY + y) + "px";
+  star.onclick = cliqueRomantico;
+  document.body.appendChild(star);
+});
+
+function mostrarFoto() {
+  const fotoAntiga = document.querySelector(".foto-casal");
+  if (fotoAntiga) return;
+
+  const img = document.createElement("img");
+  img.src = "foto.jpg";
+  img.className = "foto-casal";
+  document.body.appendChild(img);
+}
+
+function mostrarFinal() {
+  document.body.innerHTML = `
+    <div class="tela-final">
+      <h1 class="titulo-final">Eloah ❤️</h1>
+
+      <p class="texto-final">
+        Desde o momento que você entrou na minha vida,
+        tudo ficou mais bonito.
+        <br><br>
+        Você é meu presente, meu futuro, minha paz,
+        meu sorriso mais sincero e o amor da minha vida.
+        <br><br>
+        Eu te amo mais do que palavras conseguem explicar. 💖
+      </p>
+
+      <button class="btn-final" onclick="continuarHistoria()">
+        continuar 💖
+      </button>
+    </div>
+  `;
+}
+
+function continuarHistoria() {
+  document.body.innerHTML = `
+    <div class="tela-final">
+      <h1 class="titulo-final">💍</h1>
+
+      <p class="texto-final">
+        Você quer continuar essa história comigo?
+      </p>
+
+      <button class="btn-final" onclick="respostaFinal()">
+        Sim 💖
+      </button>
+    </div>
+  `;
+}
+
+function respostaFinal() {
+  document.body.innerHTML = `
+    <div class="tela-final">
+      <h1 class="titulo-final">❤️</h1>
+
+      <p class="texto-final">
+        Então vem viver isso comigo.
+        <br><br>
+        Porque eu quero você em cada capítulo da minha vida. 💖
+      </p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
